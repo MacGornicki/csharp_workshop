@@ -136,9 +136,9 @@ namespace CSharp_Fundamentals
                         Console.WriteLine("Good movie");
                         break;
 
-                    default:
+                    default: 
                         Console.WriteLine("nevermind");
-                        break;
+                        break; 
 
                 }
             }
