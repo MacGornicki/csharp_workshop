@@ -51,8 +51,10 @@
     <Compile Include="Classes\example.cs" />
     <Compile Include="DataTypesAndVariables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RPG\Heroes.cs" />
     <Compile Include="RPG\NPC.cs" />
     <Compile Include="RPG\CharacterTest.cs" />
+    <Compile Include="RPG\Weapons.cs" />
     <Compile Include="StringsAndItsOperations.cs" />
     <Compile Include="VariablesFieldProperites.cs" />
   </ItemGroup>

@@ -16,10 +16,44 @@ namespace CSharp_Fundamentals.RPG
             return 10;
         }
 
-        public NPC(int MaxLife, int CurrentLife)
+        public void TakeDamage(int damage)
+        {
+            if (damage < CurrentLife)
+            {
+                CurrentLife -= damage; 
+            }
+            else
+            {
+                CurrentLife = 0;
+            }
+
+        }
+
+        public bool isAlive()
+        {
+            if (CurrentLife>0)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+
+        }
+
+        public NPC(int MaxLife, int  CurrentLife)
         {
             this.MaxLife = MaxLife;
-            this.CurrentLife = CurrentLife;
+            if (CurrentLife > MaxLife)
+            {
+                this.CurrentLife = MaxLife;
+            }
+            else
+            {
+                this.CurrentLife = CurrentLife;
+            }
+            
         }
 
         public NPC(int HealLife)

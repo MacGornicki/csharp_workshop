@@ -14,7 +14,7 @@ namespace CSharp_Fundamentals.RPG
         [Test]
         public void AttackTest()
         {
-            NPC npc1 = new NPC(20,20);
+            NPC npc1 = new NPC(20, 20);
             npc1.Attack();
             int c = npc1.Attack();
 
@@ -24,7 +24,7 @@ namespace CSharp_Fundamentals.RPG
         [Test]
         public void LifeTest()
         {
-            var NPC = new NPC(15,20);
+            var NPC = new NPC(15, 20);
 
             int res = NPC.MaxLife - NPC.CurrentLife;
 
@@ -50,5 +50,60 @@ namespace CSharp_Fundamentals.RPG
             //Assert.True(res>=0 );
 
         }
+
+        [Test]
+        public void LifeCheck()
+        {
+            var NPC = new NPC(20, 25);
+
+            Assert.That(NPC.CurrentLife, Is.EqualTo(20), "Current life can't be greater than max");
+
+
+
+        }
+
+        [Test]
+        public void TakeDamage()
+        {
+            NPC npc2 = new NPC(25);
+            npc2.TakeDamage(30);
+
+
+            Assert.AreEqual(0, npc2.CurrentLife, "error");
+
+
+        }
+
+        [Test]
+        public void AliveTest()
+        {
+            NPC npc3 = new NPC(25, 0);
+
+            Assert.True(npc3.isAlive(), "dead");
+
+
+        }
+
+        [Test]
+        public void HeroesTest()
+        {
+            Heroes hero = new Heroes(25);
+
+            Assert.That(hero.Attack(), Is.EqualTo(10), "nor equal");
+
+
+        }
+
+        [Test]
+        public void WeaponsTest()
+        {
+            Heroes hero = new Heroes(25);
+
+            List<string> newWeaponsList = new List<string> {"Axe", "Sword", "Fireball"};
+
+            Assert.AreEqual(newWeaponsList, hero.Get_Weapon_Name());
+            
+        }
+
     }
 }
