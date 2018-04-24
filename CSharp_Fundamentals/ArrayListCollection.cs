@@ -61,8 +61,8 @@ namespace CSharp_Fundamentals
                     {
                         Console.WriteLine(result[i]);
                     }
-                        
-                    
+
+
                 }
                 else
                 {
@@ -70,6 +70,77 @@ namespace CSharp_Fundamentals
                 }
                 Console.WriteLine(i);
 
+            }
+
+
+
+        }
+
+        [Test]
+        public void IfmanyConditions()
+        {
+            var theString =
+                "The ththththth th interesting thing about London is that there are always stylish surprises around every corner.";
+
+            string[] result = theString.ToUpper().Split(' ');
+            for (int i = 0; i < result.Length; i++)
+            {
+                if ((result[i].Length > 4) && (result[i].Contains("A")))
+                {
+                    Console.WriteLine($"{i} Dlugie A");
+                }
+                else if ((result[i].Contains("B")) || (result[i].Contains("C")))
+                {
+                    Console.WriteLine($"{i} Dlugie B lub C");
+                }
+                else if ((result[i].Length == 6) && (!result[i].Contains("E")))
+                {
+                    Console.WriteLine($"{i} Dlugie bez E");
+                }
+                else
+                {
+
+                    Console.WriteLine($"{i} Nic ciekawego");
+                }
+
+            }
+
+
+        }
+
+        [Test]
+        public void StatementSwitch()
+        {
+            var theString =
+                "The ththththth th interesting thing about London is that there are always stylish surprises around every corner.";
+
+            string[] result = theString.ToUpper().Split(' ');
+            for (int i = 0; i < result.Length; i++)
+            {
+                switch (result[i])
+                {
+                    case "ABOUT":
+                        Console.WriteLine($"{i} {result[i]}");
+                        break;
+
+                    case "THE":
+                        Console.WriteLine("Something");
+                        break;
+
+                    case "INTERESTING":                     
+                    case "ALWAYS":
+                        Console.WriteLine("Harry Potter");
+                        break;
+
+                    case "THING":
+                        Console.WriteLine("Good movie");
+                        break;
+
+                    default:
+                        Console.WriteLine("nevermind");
+                        break;
+
+                }
             }
         }
     }
