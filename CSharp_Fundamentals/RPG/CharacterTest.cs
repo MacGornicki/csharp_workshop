@@ -9,6 +9,7 @@ namespace CSharp_Fundamentals.RPG
 {
 
     [TestFixture]
+    [Category("hello")]
     public class CharacterTest
     {
         [Test]

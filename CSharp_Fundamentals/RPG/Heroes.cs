@@ -40,16 +40,20 @@ namespace CSharp_Fundamentals.RPG
             return WeaponsNames;
 
         }
-        //public int ReturnWeaponDamage()
-        //{
-        //    var WeaponsNames = new List<string>();
-        //    foreach (Weapons weaponfromTheList in WeaponsList)
-        //    {
-        //        WeaponsNames.Add(weaponfromTheList.WeaponType);
-        //    }
+        public int Return_Weapon_Damage(string weaponName)
+        {
+            foreach (Weapons weaponfromTheList in WeaponsList)
+            {
+                if (weaponName == weaponfromTheList.WeaponType)
+                {
+                    return weaponfromTheList.Damage;
+                }
+                    
+                
+            }
+            return 0;
 
-        //    return Damage;
-        //}
+        }
 
 
     }
