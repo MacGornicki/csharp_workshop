@@ -100,6 +100,16 @@ namespace SeleniumWorkshop
             Assert.AreEqual(expectedTest1, receivedtext, "Diff test description");
         }
 
+        [Test]
+        public void CheckTextbySelectroNext()
+        {
+            var receivedtext = driver.FindElementByCssSelector("#homefeatured > li:nth-child(2) > div > div.right-block > h5 > a").Text;
+
+            string expectedTest1 = "Blouse";
+
+            Assert.AreEqual(expectedTest1, receivedtext, "Diff test description");
+        }
+
         [TearDown]
         public void CleanUp()
         {
