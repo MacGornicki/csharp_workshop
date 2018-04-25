@@ -68,7 +68,7 @@ namespace CSharp_Fundamentals.RPG
 
             } 
            
-        }
+        } 
 
 
 

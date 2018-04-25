@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipGameTest", "ShipGameTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ships", "Ships\Ships.csproj", "{656999D1-8097-46AE-BB70-3860F14EC80E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumWorkshop", "SeleniumWorkshop\SeleniumWorkshop.csproj", "{529995AE-7A1B-4431-AC55-6A3A11DAFF81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{656999D1-8097-46AE-BB70-3860F14EC80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{656999D1-8097-46AE-BB70-3860F14EC80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{656999D1-8097-46AE-BB70-3860F14EC80E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529995AE-7A1B-4431-AC55-6A3A11DAFF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529995AE-7A1B-4431-AC55-6A3A11DAFF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529995AE-7A1B-4431-AC55-6A3A11DAFF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529995AE-7A1B-4431-AC55-6A3A11DAFF81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
