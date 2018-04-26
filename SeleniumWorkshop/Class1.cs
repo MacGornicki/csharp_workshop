@@ -202,6 +202,17 @@ namespace SeleniumWorkshop
             Assert.AreEqual(expected_message, receivedMsg);
         }
 
+        [Test]
+        public void CheckIDMainPage()
+
+        {
+            var mainPage = new MainPage(driver);
+
+            var search_box = mainPage.FindElementById("search_query_top");
+                                   
+            Assert.AreEqual("Search", search_box.Text, "Error");
+        }
+
 
         [TearDown]
         public void CleanUp()
