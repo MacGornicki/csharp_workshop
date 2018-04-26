@@ -207,10 +207,11 @@ namespace SeleniumWorkshop
 
         {
             var mainPage = new MainPage(driver);
+            mainPage.SearchMenu();
 
-            var search_box = mainPage.FindElementById("search_query_top");
-                                   
-            Assert.AreEqual("Search", search_box.Text, "Error");
+            var search_box = mainPage.SearchMenu().Text;
+
+            Assert.AreEqual("", search_box, "Error");
         }
 
 

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="PageObjects\ContactUs.cs" />
+    <Compile Include="PageObjects\Header.cs" />
     <Compile Include="PageObjects\MainPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
