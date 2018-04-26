@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
+using SeleniumWorkshop.PageObjects;
 
 namespace SeleniumWorkshop
 {
@@ -153,28 +155,58 @@ namespace SeleniumWorkshop
         {
             var contactUsClick = driver.FindElementById("contact-link");
             contactUsClick.Click();
+            var contactUspage = new ContactUs(driver);
 
-            driver.FindElementByCssSelector("#id_contact > :nth-child(3)").Click();
-
-            driver.FindElementByCssSelector("#email").SendKeys("masti@o2.pl");
-            driver.FindElementByCssSelector("#id_order").SendKeys("reference 123");
-            driver.FindElementByCssSelector("#message").SendKeys("Dear All");
-            driver.FindElementByCssSelector("#submitMessage > span").Click();
+            contactUspage.ChooseSubjectHeading(3).Click();
+            contactUspage.EmailAddress().SendKeys("masti@o2.pl");
+            contactUspage.OrderReferrence().SendKeys("reference 123");
+            contactUspage.EmailMessageText().SendKeys("Dear All");
+            contactUspage.SendButton().Click();
 
             string expected_message = "Your message has been successfully sent to our team.";
 
+            Assert.AreEqual(expected_message, driver.FindElementByCssSelector("#center_column > p").Text);
+        }
 
-               Assert.AreEqual(expected_message, driver.FindElementByCssSelector("#center_column > p").Text);
+        [Test]
+        public void GuessWhat()
+        {
+            var firstclick = driver.FindElementByCssSelector("header > div.nav > div > div > nav > div.header_user_info > a");
+            firstclick.Click();
 
 
+            driver.FindElementByCssSelector("#email_create").SendKeys("");
+            driver.FindElementByCssSelector("#SubmitCreate > span").Click();
+            Thread.Sleep(1000);          // dodano "sleep" bo tekst sie nie zdążył jeszcze wyslwietlić, a juz sprawdzamy to wymaga "using System.Threading"
 
+            //alternatywne rozwiazanie - lepsze!!!:
+            // for (int i = 0, i<100, i++)
+            //      {
+            //          Thread.Sleep(10);
+            //          try
+            //          {
+            //              if (tu warunek, na który czekasz żeby się spełnił)
+            //                  {
+            //                      break;
+            //                  }
+            //          }
+            //          catch (Exception);
+            //      }
+
+            // inne rozwiąznie:
+            //  driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            string receivedMsg = driver.FindElementByCssSelector("#create_account_error").Text;
+
+            string expected_message = "Invalid email address.";
+
+            Assert.AreEqual(expected_message, receivedMsg);
         }
 
 
         [TearDown]
         public void CleanUp()
         {
-           driver.Quit();         // to żeby zadziałało poza tym testem to musimy stworzyć webdriver dla wszystkich testów "private ChromeDriver driver" za klasa, oraz w setupie "driver = new ChromeDriver();"
+           //driver.Quit();         // to żeby zadziałało poza tym testem to musimy stworzyć webdriver dla wszystkich testów "private ChromeDriver driver" za klasa, oraz w setupie "driver = new ChromeDriver();"
         }
     }
 }
