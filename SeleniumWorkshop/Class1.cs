@@ -110,10 +110,71 @@ namespace SeleniumWorkshop
             Assert.AreEqual(expectedTest1, receivedtext, "Diff test description");
         }
 
+        [Test]
+        public void CheckTestInDropDownMenu()
+        {
+            var contactUsClick = driver.FindElementById("contact-link");
+                contactUsClick.Click();
+
+            var receivedtext = driver.FindElementByCssSelector("#id_contact > :nth-child(2)").Text;
+
+            string expectedTest2 = "Customer service";
+
+            Assert.AreEqual(expectedTest2, receivedtext, "Diff description of item 2");
+        }
+
+        [Test]
+        public void AllTextsInDropDownMenu()
+        {
+            var contactUsClick = driver.FindElementById("contact-link");
+            contactUsClick.Click();
+
+            var elements = driver.FindElementsByCssSelector("#id_contact option");
+
+            foreach (var oneoftheOptions in elements)
+            {
+                Console.WriteLine($"Option : {oneoftheOptions.Text}");
+
+            }
+        }
+
+        [Test]
+        public void GoToInDropDownMenuItem()
+        {
+            var contactUsClick = driver.FindElementById("contact-link");
+            contactUsClick.Click();
+
+            driver.FindElementByCssSelector("#id_contact > :nth-child(3)").Click();
+            
+        }
+
+        [Test]
+        public void SendEmail()
+        {
+            var contactUsClick = driver.FindElementById("contact-link");
+            contactUsClick.Click();
+
+            driver.FindElementByCssSelector("#id_contact > :nth-child(3)").Click();
+
+            driver.FindElementByCssSelector("#email").SendKeys("masti@o2.pl");
+            driver.FindElementByCssSelector("#id_order").SendKeys("reference 123");
+            driver.FindElementByCssSelector("#message").SendKeys("Dear All");
+            driver.FindElementByCssSelector("#submitMessage > span").Click();
+
+            string expected_message = "Your message has been successfully sent to our team.";
+
+
+               Assert.AreEqual(expected_message, driver.FindElementByCssSelector("#center_column > p").Text);
+
+
+
+        }
+
+
         [TearDown]
         public void CleanUp()
         {
-            driver.Quit();         // to żeby zadziałało poza tym testem to musimy stworzyć webdriver dla wszystkich testów "private ChromeDriver driver" za klasa, oraz w setupie "driver = new ChromeDriver();"
+           driver.Quit();         // to żeby zadziałało poza tym testem to musimy stworzyć webdriver dla wszystkich testów "private ChromeDriver driver" za klasa, oraz w setupie "driver = new ChromeDriver();"
         }
     }
 }
